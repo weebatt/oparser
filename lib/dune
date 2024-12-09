@@ -1,0 +1,12 @@
+(library
+ (name oparser)
+ (public_name oparser)
+ (modules parser lexer ast)
+ (libraries menhirLib yojson)
+ (preprocess (pps ppx_deriving.show ppx_deriving_yojson)))
+
+(menhir
+ (modules parser)
+ (flags --explain))
+
+(ocamllex lexer)

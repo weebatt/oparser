@@ -1,0 +1,52 @@
+type token =
+    VOID
+  | THROWS
+  | STATIC
+  | SEMICOLON
+  | RPAREN
+  | RBRACKET
+  | RBRACE
+  | PUBLIC
+  | PROTECTED
+  | PRIVATE
+  | MAIN
+  | LPAREN
+  | LBRACKET
+  | LBRACE
+  | INT_LITERAL of int
+  | INTERFACE
+  | IDENTIFIER of string
+  | FINAL
+  | EOF
+  | COMMA
+  | CLASS
+  | AT
+  | ABSTRACT
+val menhir_begin_marker : int
+val xv_type_type : Ast.type_type
+val xv_type_or_void : Ast.type_type
+val xv_modifiers : string list
+val xv_modifier : string
+val xv_method_declaration : Ast.method_decl
+val xv_method_body : Ast.block
+val xv_interface_declaration_list : Ast.interface_decl list
+val xv_interface_declaration : Ast.interface_decl
+val xv_interface_body_declarations : Ast.interface_body_declaration list
+val xv_interface_body_declaration : Ast.interface_body_declaration
+val xv_interface_body : Ast.interface_body
+val xv_formal_parameters : Ast.param list
+val xv_formal_parameter_list : Ast.param list
+val xv_formal_parameter : Ast.param
+val xv_field_declaration : Ast.field_decl
+val xv_constructor_declaration : Ast.constructor_decl
+val xv_constructor_body : Ast.block
+val xv_compilation_unit : Ast.compilation_unit
+val xv_class_declaration_list : Ast.class_decl list
+val xv_class_declaration : Ast.class_decl
+val xv_class_body_declarations : Ast.class_body_declaration list
+val xv_class_body_declaration : Ast.class_body_declaration
+val xv_class_body : Ast.class_body
+val xv_block_body : unit
+val xv_annotations : string list
+val xv_annotation : string
+val menhir_end_marker : int
