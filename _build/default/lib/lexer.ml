@@ -1393,157 +1393,157 @@ let rec token lexbuf =
 and __ocaml_lex_token_rec lexbuf __ocaml_lex_state =
   match Lexing.engine __ocaml_lex_tables __ocaml_lex_state lexbuf with
       | 0 ->
-# 8 "lib/lexer.mll"
+# 7 "lib/lexer.mll"
                          ( token lexbuf )
 # 1399 "lib/lexer.ml"
 
   | 1 ->
-# 9 "lib/lexer.mll"
+# 8 "lib/lexer.mll"
                   ( token lexbuf )
 # 1404 "lib/lexer.ml"
 
   | 2 ->
-# 10 "lib/lexer.mll"
+# 9 "lib/lexer.mll"
                                      ( token lexbuf )
 # 1409 "lib/lexer.ml"
 
   | 3 ->
-# 13 "lib/lexer.mll"
+# 12 "lib/lexer.mll"
         ( AT )
 # 1414 "lib/lexer.ml"
 
   | 4 ->
-# 16 "lib/lexer.mll"
+# 15 "lib/lexer.mll"
                          ( CLASS )
 # 1419 "lib/lexer.ml"
 
   | 5 ->
-# 17 "lib/lexer.mll"
+# 16 "lib/lexer.mll"
                          ( INTERFACE )
 # 1424 "lib/lexer.ml"
 
   | 6 ->
-# 18 "lib/lexer.mll"
+# 17 "lib/lexer.mll"
                          ( PUBLIC )
 # 1429 "lib/lexer.ml"
 
   | 7 ->
-# 19 "lib/lexer.mll"
+# 18 "lib/lexer.mll"
                          ( PRIVATE )
 # 1434 "lib/lexer.ml"
 
   | 8 ->
-# 20 "lib/lexer.mll"
+# 19 "lib/lexer.mll"
                          ( PROTECTED )
 # 1439 "lib/lexer.ml"
 
   | 9 ->
-# 21 "lib/lexer.mll"
+# 20 "lib/lexer.mll"
                          ( STATIC )
 # 1444 "lib/lexer.ml"
 
   | 10 ->
-# 22 "lib/lexer.mll"
+# 21 "lib/lexer.mll"
                          ( ABSTRACT )
 # 1449 "lib/lexer.ml"
 
   | 11 ->
-# 23 "lib/lexer.mll"
+# 22 "lib/lexer.mll"
                          ( FINAL )
 # 1454 "lib/lexer.ml"
 
   | 12 ->
-# 24 "lib/lexer.mll"
+# 23 "lib/lexer.mll"
                          ( VOID )
 # 1459 "lib/lexer.ml"
 
   | 13 ->
-# 25 "lib/lexer.mll"
+# 24 "lib/lexer.mll"
                          ( THROWS )
 # 1464 "lib/lexer.ml"
 
   | 14 ->
-# 26 "lib/lexer.mll"
+# 25 "lib/lexer.mll"
                          ( MAIN )
 # 1469 "lib/lexer.ml"
 
   | 15 ->
-# 29 "lib/lexer.mll"
+# 28 "lib/lexer.mll"
                          ( LBRACE )
 # 1474 "lib/lexer.ml"
 
   | 16 ->
-# 30 "lib/lexer.mll"
+# 29 "lib/lexer.mll"
                          ( RBRACE )
 # 1479 "lib/lexer.ml"
 
   | 17 ->
-# 31 "lib/lexer.mll"
+# 30 "lib/lexer.mll"
                          ( LPAREN )
 # 1484 "lib/lexer.ml"
 
   | 18 ->
-# 32 "lib/lexer.mll"
+# 31 "lib/lexer.mll"
                          ( RPAREN )
 # 1489 "lib/lexer.ml"
 
   | 19 ->
-# 33 "lib/lexer.mll"
+# 32 "lib/lexer.mll"
                          ( LBRACKET )
 # 1494 "lib/lexer.ml"
 
   | 20 ->
-# 34 "lib/lexer.mll"
+# 33 "lib/lexer.mll"
                          ( RBRACKET )
 # 1499 "lib/lexer.ml"
 
   | 21 ->
-# 35 "lib/lexer.mll"
+# 34 "lib/lexer.mll"
                          ( SEMICOLON )
 # 1504 "lib/lexer.ml"
 
   | 22 ->
-# 36 "lib/lexer.mll"
+# 35 "lib/lexer.mll"
                          ( COMMA )
 # 1509 "lib/lexer.ml"
 
   | 23 ->
 let
-# 39 "lib/lexer.mll"
+# 37 "lib/lexer.mll"
                                                             id
 # 1515 "lib/lexer.ml"
 = Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
-# 39 "lib/lexer.mll"
+# 37 "lib/lexer.mll"
                                                                ( IDENTIFIER id )
 # 1519 "lib/lexer.ml"
 
   | 24 ->
 let
-# 42 "lib/lexer.mll"
+# 39 "lib/lexer.mll"
                   num
 # 1525 "lib/lexer.ml"
 = Lexing.sub_lexeme lexbuf lexbuf.Lexing.lex_start_pos lexbuf.Lexing.lex_curr_pos in
-# 42 "lib/lexer.mll"
+# 39 "lib/lexer.mll"
                       ( INT_LITERAL (int_of_string num) )
 # 1529 "lib/lexer.ml"
 
   | 25 ->
-# 45 "lib/lexer.mll"
+# 42 "lib/lexer.mll"
                     ( token lexbuf )
 # 1534 "lib/lexer.ml"
 
   | 26 ->
-# 48 "lib/lexer.mll"
+# 44 "lib/lexer.mll"
         ( EOF )
 # 1539 "lib/lexer.ml"
 
   | 27 ->
 let
-# 51 "lib/lexer.mll"
+# 47 "lib/lexer.mll"
          char
 # 1545 "lib/lexer.ml"
 = Lexing.sub_lexeme_char lexbuf lexbuf.Lexing.lex_start_pos in
-# 51 "lib/lexer.mll"
+# 47 "lib/lexer.mll"
               ( raise (Error (Printf.sprintf "Unexpected character: %c" char)) )
 # 1549 "lib/lexer.ml"
 
@@ -1552,7 +1552,7 @@ let
 
 ;;
 
-# 53 "lib/lexer.mll"
+# 49 "lib/lexer.mll"
  
   let token lexbuf = token lexbuf
 

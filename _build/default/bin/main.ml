@@ -5,7 +5,6 @@ open Lexing
 open Ast
 
 
-(* Функция для преобразования AST в формат D3.js *)
 let rec ast_to_d3_json ast =
   match ast with
   | ClassCompilation classes ->

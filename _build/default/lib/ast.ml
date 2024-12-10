@@ -11,10 +11,9 @@ type type_type =
 type param = Param of type_type * string
 [@@deriving yojson]
 
-(* Упрощённый тип block *)
 type block =
-  | Block            (* Тело присутствует, но содержимое игнорируется *)
-  | EmptyBlock       (* Тело отсутствует *)
+  | Block
+  | EmptyBlock
 [@@deriving yojson]
 
 type method_decl = {
@@ -41,7 +40,6 @@ type field_decl = {
   f_name : string;
 } [@@deriving yojson]
 
-(* Объявление классов и интерфейсов *)
 type class_decl = {
   cl_annotations : annotation list;
   cl_modifiers : modifier list;
@@ -56,19 +54,17 @@ and interface_decl = {
   i_body : interface_body;
 } [@@deriving yojson]
 
-(* Декларации внутри тела класса *)
 and class_body_declaration = 
   | ClassMethodDecl of method_decl
   | ConstructorDecl of constructor_decl
   | FieldDecl of field_decl
   | ClassEmptyDeclaration
-  | NestedClassDecl of class_decl  (* Вложенные классы остались *)
+  | NestedClassDecl of class_decl
 [@@deriving yojson]
 
 and class_body = ClassBody of class_body_declaration list
 [@@deriving yojson]
 
-(* Декларации внутри тела интерфейса *)
 and interface_body_declaration =
   | InterfaceMethodDecl of method_decl
   | InterfaceEmptyDeclaration
@@ -77,7 +73,6 @@ and interface_body_declaration =
 and interface_body = InterfaceBody of interface_body_declaration list
 [@@deriving yojson]
 
-(* Компиляционные единицы *)
 type compilation_unit = 
   | ClassCompilation of class_decl list
   | InterfaceCompilation of interface_decl list

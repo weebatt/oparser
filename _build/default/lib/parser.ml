@@ -239,7 +239,7 @@ and _menhir_box_compilation_unit =
 let _menhir_action_01 =
   fun _2 ->
     (
-# 148 "lib/parser.mly"
+# 145 "lib/parser.mly"
                   ( _2 )
 # 245 "lib/parser.ml"
      : (string))
@@ -247,7 +247,7 @@ let _menhir_action_01 =
 let _menhir_action_02 =
   fun _1 _2 ->
     (
-# 143 "lib/parser.mly"
+# 140 "lib/parser.mly"
                            ( _1 :: _2 )
 # 253 "lib/parser.ml"
      : (string list))
@@ -255,7 +255,7 @@ let _menhir_action_02 =
 let _menhir_action_03 =
   fun _1 ->
     (
-# 144 "lib/parser.mly"
+# 141 "lib/parser.mly"
                ( [_1] )
 # 261 "lib/parser.ml"
      : (string list))
@@ -263,15 +263,15 @@ let _menhir_action_03 =
 let _menhir_action_04 =
   fun () ->
     (
-# 145 "lib/parser.mly"
-                ( [] )
+# 142 "lib/parser.mly"
+    ( [] )
 # 269 "lib/parser.ml"
      : (string list))
 
 let _menhir_action_05 =
   fun () ->
     (
-# 110 "lib/parser.mly"
+# 109 "lib/parser.mly"
                              ( () )
 # 277 "lib/parser.ml"
      : (unit))
@@ -279,8 +279,8 @@ let _menhir_action_05 =
 let _menhir_action_06 =
   fun () ->
     (
-# 111 "lib/parser.mly"
-                ( () )
+# 110 "lib/parser.mly"
+    ( () )
 # 285 "lib/parser.ml"
      : (unit))
 
@@ -344,7 +344,7 @@ let _menhir_action_14 =
   fun () ->
     (
 # 52 "lib/parser.mly"
-                ( [] )
+    ( [] )
 # 349 "lib/parser.ml"
      : (Ast.class_body_declaration list))
 
@@ -396,7 +396,7 @@ let _menhir_action_19 =
 let _menhir_action_20 =
   fun () ->
     (
-# 120 "lib/parser.mly"
+# 117 "lib/parser.mly"
                              ( Block )
 # 402 "lib/parser.ml"
      : (Ast.block))
@@ -404,7 +404,7 @@ let _menhir_action_20 =
 let _menhir_action_21 =
   fun () ->
     (
-# 121 "lib/parser.mly"
+# 118 "lib/parser.mly"
               ( EmptyBlock )
 # 410 "lib/parser.ml"
      : (Ast.block))
@@ -419,7 +419,7 @@ let _menhir_action_22 =
         c_modifiers = _2;
         c_name = _3; 
         c_params = _5;
-        c_body = _7;   (* Всегда Block или EmptyBlock *)
+        c_body = _7;
       }
     )
 # 426 "lib/parser.ml"
@@ -443,7 +443,7 @@ let _menhir_action_23 =
 let _menhir_action_24 =
   fun _1 _2 ->
     (
-# 132 "lib/parser.mly"
+# 129 "lib/parser.mly"
                          ( Param(_1, _2) )
 # 449 "lib/parser.ml"
      : (Ast.param))
@@ -451,7 +451,7 @@ let _menhir_action_24 =
 let _menhir_action_25 =
   fun _1 _4 ->
     (
-# 133 "lib/parser.mly"
+# 130 "lib/parser.mly"
                                            ( Param(_1, _4) )
 # 457 "lib/parser.ml"
      : (Ast.param))
@@ -459,7 +459,7 @@ let _menhir_action_25 =
 let _menhir_action_26 =
   fun _1 ->
     (
-# 128 "lib/parser.mly"
+# 125 "lib/parser.mly"
                      ( [_1] )
 # 465 "lib/parser.ml"
      : (Ast.param list))
@@ -467,7 +467,7 @@ let _menhir_action_26 =
 let _menhir_action_27 =
   fun _1 _3 ->
     (
-# 129 "lib/parser.mly"
+# 126 "lib/parser.mly"
                                                  ( _1 :: _3 )
 # 473 "lib/parser.ml"
      : (Ast.param list))
@@ -475,15 +475,15 @@ let _menhir_action_27 =
 let _menhir_action_28 =
   fun () ->
     (
-# 124 "lib/parser.mly"
-                ( [] )
+# 121 "lib/parser.mly"
+    ( [] )
 # 481 "lib/parser.ml"
      : (Ast.param list))
 
 let _menhir_action_29 =
   fun _1 ->
     (
-# 125 "lib/parser.mly"
+# 122 "lib/parser.mly"
                           ( _1 )
 # 489 "lib/parser.ml"
      : (Ast.param list))
@@ -524,7 +524,7 @@ let _menhir_action_34 =
   fun () ->
     (
 # 66 "lib/parser.mly"
-                ( [] )
+    ( [] )
 # 529 "lib/parser.ml"
      : (Ast.interface_body_declaration list))
 
@@ -560,7 +560,7 @@ let _menhir_action_37 =
 let _menhir_action_38 =
   fun () ->
     (
-# 115 "lib/parser.mly"
+# 113 "lib/parser.mly"
                              ( Block )
 # 566 "lib/parser.ml"
      : (Ast.block))
@@ -568,7 +568,7 @@ let _menhir_action_38 =
 let _menhir_action_39 =
   fun () ->
     (
-# 116 "lib/parser.mly"
+# 114 "lib/parser.mly"
               ( EmptyBlock )
 # 574 "lib/parser.ml"
      : (Ast.block))
@@ -584,7 +584,7 @@ let _menhir_action_40 =
         m_return_type = _3;
         m_name = _4;
         m_params = _6;
-        m_body = _8;  (* Всегда Block или EmptyBlock *)
+        m_body = _8;
       }
     )
 # 591 "lib/parser.ml"
@@ -593,7 +593,7 @@ let _menhir_action_40 =
 let _menhir_action_41 =
   fun () ->
     (
-# 155 "lib/parser.mly"
+# 152 "lib/parser.mly"
            ( "public" )
 # 599 "lib/parser.ml"
      : (string))
@@ -601,7 +601,7 @@ let _menhir_action_41 =
 let _menhir_action_42 =
   fun () ->
     (
-# 156 "lib/parser.mly"
+# 153 "lib/parser.mly"
             ( "private" )
 # 607 "lib/parser.ml"
      : (string))
@@ -609,7 +609,7 @@ let _menhir_action_42 =
 let _menhir_action_43 =
   fun () ->
     (
-# 157 "lib/parser.mly"
+# 154 "lib/parser.mly"
               ( "protected" )
 # 615 "lib/parser.ml"
      : (string))
@@ -617,7 +617,7 @@ let _menhir_action_43 =
 let _menhir_action_44 =
   fun () ->
     (
-# 158 "lib/parser.mly"
+# 155 "lib/parser.mly"
            ( "static" )
 # 623 "lib/parser.ml"
      : (string))
@@ -625,7 +625,7 @@ let _menhir_action_44 =
 let _menhir_action_45 =
   fun () ->
     (
-# 159 "lib/parser.mly"
+# 156 "lib/parser.mly"
              ( "abstract" )
 # 631 "lib/parser.ml"
      : (string))
@@ -633,7 +633,7 @@ let _menhir_action_45 =
 let _menhir_action_46 =
   fun () ->
     (
-# 160 "lib/parser.mly"
+# 157 "lib/parser.mly"
           ( "final" )
 # 639 "lib/parser.ml"
      : (string))
@@ -641,7 +641,7 @@ let _menhir_action_46 =
 let _menhir_action_47 =
   fun _1 _2 ->
     (
-# 151 "lib/parser.mly"
+# 148 "lib/parser.mly"
                        ( _1 :: _2 )
 # 647 "lib/parser.ml"
      : (string list))
@@ -649,15 +649,15 @@ let _menhir_action_47 =
 let _menhir_action_48 =
   fun () ->
     (
-# 152 "lib/parser.mly"
-                ( [] )
+# 149 "lib/parser.mly"
+    ( [] )
 # 655 "lib/parser.ml"
      : (string list))
 
 let _menhir_action_49 =
   fun _1 ->
     (
-# 136 "lib/parser.mly"
+# 133 "lib/parser.mly"
               ( _1 )
 # 663 "lib/parser.ml"
      : (Ast.type_type))
@@ -665,7 +665,7 @@ let _menhir_action_49 =
 let _menhir_action_50 =
   fun () ->
     (
-# 137 "lib/parser.mly"
+# 134 "lib/parser.mly"
          ( VoidType )
 # 671 "lib/parser.ml"
      : (Ast.type_type))
@@ -673,7 +673,7 @@ let _menhir_action_50 =
 let _menhir_action_51 =
   fun _1 ->
     (
-# 140 "lib/parser.mly"
+# 137 "lib/parser.mly"
                ( TypeName(_1) )
 # 679 "lib/parser.ml"
      : (Ast.type_type))

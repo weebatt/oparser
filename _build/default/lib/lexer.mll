@@ -4,7 +4,6 @@
 }
 
 rule token = parse
-  (* Whitespace and comments *)
   | [' ' '\t' '\n' '\r'] { token lexbuf }  (* Ignore whitespace *)
   | "//" [^'\n']* { token lexbuf }        (* Single-line comments *)
   | "/*" ([^'*'] | '*' [^'/'])* "*/" { token lexbuf }  (* Block comments *)
@@ -35,16 +34,13 @@ rule token = parse
   | ';'                  { SEMICOLON }
   | ','                  { COMMA }
 
-  (* Identifiers: variable names, method names, class names, etc. *)
   | ['a'-'z' 'A'-'Z' '_'] ['a'-'z' 'A'-'Z' '0'-'9' '_']* as id { IDENTIFIER id }
 
-  (* Numbers: simple recognition for numeric literals *)
   | ['0'-'9']+ as num { INT_LITERAL (int_of_string num) }
 
-  (* Strings: recognize double-quoted strings but don't store content *)
-  | '"' [^'"']* '"' { token lexbuf }  (* Skip over strings *)
 
-  (* End of file *)
+  | '"' [^'"']* '"' { token lexbuf }
+
   | eof { EOF }
 
   (* Unexpected characters *)

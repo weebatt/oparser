@@ -49,7 +49,7 @@ class_body:
 
 class_body_declarations:
   | class_body_declaration class_body_declarations { $1 :: $2 }
-  | /* empty */ { [] }
+  | { [] }
 
 class_body_declaration:
   | method_declaration { ClassMethodDecl($1) }
@@ -63,7 +63,7 @@ interface_body:
 
 interface_body_declarations:
   | interface_body_declaration interface_body_declarations { $1 :: $2 }
-  | /* empty */ { [] }
+  | { [] }
 
 interface_body_declaration:
   | method_declaration { InterfaceMethodDecl($1) }
@@ -78,7 +78,7 @@ method_declaration:
         m_return_type = $3;
         m_name = $4;
         m_params = $6;
-        m_body = $8;  (* Всегда Block или EmptyBlock *)
+        m_body = $8;
       }
     }
 
@@ -90,7 +90,7 @@ constructor_declaration:
         c_modifiers = $2;
         c_name = $3; 
         c_params = $5;
-        c_body = $7;   (* Всегда Block или EmptyBlock *)
+        c_body = $7;
       }
     }
 
@@ -105,23 +105,20 @@ field_declaration:
       }
     }
 
-(* Правило для пропуска содержимого блока *)
 block_body:
-  | LBRACE block_body RBRACE { () }   (* Рекурсивно пропускаем содержимое внутри фигурных скобок *)
-  | /* empty */ { () }
+  | LBRACE block_body RBRACE { () }
+  | { () }
 
-(* Определение тела метода *)
 method_body:
-  | LBRACE block_body RBRACE { Block }   (* Тело присутствует, но содержимое игнорируется *)
-  | SEMICOLON { EmptyBlock }             (* Метод без тела, например, абстрактный или в интерфейсе *)
+  | LBRACE block_body RBRACE { Block }
+  | SEMICOLON { EmptyBlock }
 
-(* Определение тела конструктора *)
 constructor_body:
-  | LBRACE block_body RBRACE { Block }   (* Конструктор с телом, содержимое игнорируется *)
-  | SEMICOLON { EmptyBlock }             (* Конструктор без тела, что редко, но возможно *)
+  | LBRACE block_body RBRACE { Block }
+  | SEMICOLON { EmptyBlock }
 
 formal_parameters:
-  | /* empty */ { [] }
+  | { [] }
   | formal_parameter_list { $1 }
 
 formal_parameter_list:
@@ -142,14 +139,14 @@ type_type:
 annotations:
   | annotation annotations { $1 :: $2 }
   | annotation { [$1] }
-  | /* empty */ { [] }
+  | { [] }
 
 annotation:
   | AT IDENTIFIER { $2 }
 
 modifiers:
   | modifier modifiers { $1 :: $2 }
-  | /* empty */ { [] }
+  | { [] }
 
 modifier:
   | PUBLIC { "public" }
