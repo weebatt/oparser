@@ -11,6 +11,5 @@ public class TestClass {
         private int value;
 
         public void innerMethod() { }
-}
-
+    }
 }
