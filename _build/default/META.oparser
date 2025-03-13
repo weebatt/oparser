@@ -1,7 +1,0 @@
-description = ""
-requires =
-"menhirLib ppx_deriving.runtime ppx_deriving_yojson.runtime yojson"
-archive(byte) = "oparser.cma"
-archive(native) = "oparser.cmxa"
-plugin(byte) = "oparser.cma"
-plugin(native) = "oparser.cmxs"
