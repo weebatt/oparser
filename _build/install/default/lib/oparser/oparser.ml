@@ -1,1 +1,1 @@
-../../../../default/lib/oparser.ml-gen
+../../../../default/parser/lib/oparser.ml-gen

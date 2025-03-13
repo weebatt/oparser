@@ -1,1 +1,1 @@
-../../../../default/lib/parser.mli
+../../../../default/parser/lib/parser.mli

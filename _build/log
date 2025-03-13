@@ -1,4 +1,4 @@
-# dune exec ./bin/main.exe test/TestClass.java ast.json
+# dune exec ./parser/bin/main.exe parser/test/TestClass.java visualize/ast.json
 # OCAMLPARAM: unset
 # Shared cache: disabled
 # Shared cache location: /Users/macbook/.cache/dune/db
@@ -13,4 +13,4 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /Users/macbook/.opam/default/bin/ocamlc.opt -config > /var/folders/0d/xmgzhhkn0yqg7yryd4_fh9gm0000gn/T/dune_d814c6_output
+$ /Users/macbook/.opam/default/bin/ocamlc.opt -config > /var/folders/0d/xmgzhhkn0yqg7yryd4_fh9gm0000gn/T/dune_b045bd_output

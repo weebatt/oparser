@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+.node circle {
+  fill: #999;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.node text {
+  font: 12px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #555;
+  stroke-width: 1.5px;
+}
+
+.tooltip {
+  position: absolute;
+  text-align: left;
+  padding: 8px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  pointer-events: none;
+}
+</style>
+<body>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+
+const width = 1920;
+const height = 1080;
+
+const svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .call(d3.zoom().on("zoom", function (event) {
+        svgGroup.attr("transform", event.transform)
+    }))
+  .append("g")
+    .attr("transform", "translate(80,0)");
+
+const svgGroup = svg.append("g");
+
+const treeLayout = d3.tree().size([height, width - 160]);
+
+const tooltip = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
+d3.json("ast.json").then(function(data) {
+
+  const root = d3.hierarchy(data, d => d.children);
+
+  treeLayout(root);
+
+  svgGroup.selectAll(".link")
+      .data(root.links())
+    .enter().append("path")
+      .attr("class", "link")
+      .attr("d", d3.linkHorizontal()
+          .x(d => d.y)
+          .y(d => d.x));
+
+  const node = svgGroup.selectAll(".node")
+      .data(root.descendants())
+    .enter().append("g")
+      .attr("class", d => "node" +
+        (d.children ? " node--internal" : " node--leaf"))
+      .attr("transform", d => `translate(${d.y},${d.x})`)
+      .on("click", function(event, d) {
+        if (d.children) {
+          d._children = d.children;
+          d.children = null;
+        } else {
+          d.children = d._children;
+          d._children = null;
+        }
+        update(root);
+      })
+      .on("mouseover", function(event, d) {
+          tooltip.transition()
+              .duration(200)
+              .style("opacity", .9);
+          tooltip.html(getTooltipContent(d.data.name))
+              .style("left", (event.pageX + 10) + "px")
+              .style("top", (event.pageY - 28) + "px");
+          })
+      .on("mouseout", function(d) {
+          tooltip.transition()
+              .duration(500)
+              .style("opacity", 0);
+      });
+
+  node.append("circle")
+      .attr("r", 4.5)
+      .attr("fill", d => d._children ? "#555" : "#999");
+
+  node.append("text")
+      .attr("dy", 3)
+      .attr("x", d => d.children || d._children ? -8 : 8)
+      .style("text-anchor", d => d.children || d._children ? "end" : "start")
+      .text(d => d.data.name);
+
+  function update(source) {
+    treeLayout(root);
+
+    svgGroup.selectAll(".link")
+        .data(root.links())
+      .join(
+        enter => enter.append("path")
+                      .attr("class", "link")
+                      .attr("d", d3.linkHorizontal()
+                          .x(d => d.y)
+                          .y(d => d.x)),
+        update => update.transition().duration(200)
+                      .attr("d", d3.linkHorizontal()
+                          .x(d => d.y)
+                          .y(d => d.x)),
+        exit => exit.remove()
+      );
+
+    const nodes = svgGroup.selectAll(".node")
+        .data(root.descendants(), d => d.id || (d.id = ++i));
+
+    const nodesEnter = nodes.enter().append("g")
+        .attr("class", d => "node" +
+          (d.children ? " node--internal" : " node--leaf"))
+        .attr("transform", d => `translate(${source.y},${source.x})`)
+        .on("click", function(event, d) {
+          if (d.children) {
+            d._children = d.children;
+            d.children = null;
+          } else {
+            d.children = d._children;
+            d._children = null;
+          }
+          update(d);
+        })
+        .on("mouseover", function(event, d) {
+            tooltip.transition()
+                .duration(200)
+                .style("opacity", .9);
+            tooltip.html(getTooltipContent(d.data.name))
+                .style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 28) + "px");
+            })
+        .on("mouseout", function(d) {
+            tooltip.transition()
+                .duration(500)
+                .style("opacity", 0);
+        });
+
+    nodesEnter.append("circle")
+        .attr("r", 4.5)
+        .attr("fill", d => d._children ? "#555" : "#999");
+
+    nodesEnter.append("text")
+        .attr("dy", 3)
+        .attr("x", d => d.children || d._children ? -8 : 8)
+        .style("text-anchor", d => d.children || d._children ? "end" : "start")
+        .text(d => d.data.name);
+
+    nodes.merge(nodesEnter).transition().duration(200)
+        .attr("transform", d => `translate(${d.y},${d.x})`);
+
+    nodes.exit().remove();
+  }
+
+
+  let i = 0;
+
+  function getTooltipContent(name) {
+    const parts = name.split(": ");
+    if (parts.length === 2) {
+      return `<strong>${parts[0]}</strong><br/>${parts[1]}`;
+    }
+    return name;
+  }
+
+  update(root);
+
+});
+
+</script>
+</body>
