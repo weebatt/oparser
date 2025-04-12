@@ -99,8 +99,10 @@ open _build/default/_doc/_html/index.html
 ```
 
 ## Контакты
-- Telegram: @weebatt \
-- Email: batareyka.work@gmail.com
+Telegram: 
+- @weebat - по всем вопросам не связанным с работой обитаю тут
+- @batapejka - рабочий аккаунт
+Email: batareyka.work@gmail.com
 
 ## Лицензия 
 
